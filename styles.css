@@ -1,0 +1,76 @@
+body {
+  background-color: black;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-family: helvetica;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+
+p {
+  font-family: helvetica;
+  color: white;
+  font-size: 16px;
+}
+#mapid {
+  height:100vh;
+}
+
+/* ===== INFO PANEL ===== */
+
+#trigger {
+  font-size:30px;
+  cursor:pointer;
+  position:fixed;
+  top:7px;
+  left:20px;
+  z-index: 9;
+  color: white;
+  font-family:'helvetica';
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 11;
+    top: 0;
+    left: 0;
+    background-color: black;
+    overflow-x: hidden;
+    transition: 0.2s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 2%;
+    text-align: center;
+    margin-top: 20px;
+    padding:20px;
+    color: white;
+}
+
+.overlay a {
+    padding: 5px;
+    text-decoration: none;
+    font-family:'helvetica';
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.2s;
+    font-weight:normal;
+    text-align:left;
+}
+
+.closebtn {
+    position: absolute;
+    top: 17px;
+    right: 10px;
+    font-size: 35px !important;
+    line-height:0px;
+}
+

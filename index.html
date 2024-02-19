@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mapping Platform Title</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+
+  crossorigin=""></script>
+
+</head>
+
+<body>
+
+  <div id="titlebar"><h1>Cripping the Map</h1></div>
+
+  <div id="mapid"></div>
+ 
+<nav id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" 
+onclick="closeNav()">x</a>
+    <div class="overlay-content">
+            
+    <a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam erat mauris, condimentum fermentum velit non, maximus consequat lacus. Nunc porttitor eleifend sodales. Phasellus nisi augue, facilisis vel nisi in, euismod vulputate urna. Ut maximus quis sapien sed tempus. </a>
+
+    <a>Etiam vitae eros aliquet mauris convallis posuere non eget justo. Duis ultrices, ligula ut egestas condimentum, justo magna placerat nulla, a hendrerit eros dolor et ipsum. Vestibulum gravida libero nisl, vel dictum ipsum cursus a. Ut eleifend semper quam non feugiat. </a>
+
+    <a>Etiam convallis, justo pharetra finibus pharetra, orci massa commodo ipsum, eget varius tellus augue ut lectus. Nunc ac sapien semper, accumsan felis tincidunt, lacinia ipsum.</a>
+
+     </div>
+</nav>
+  <span id="trigger"  onclick="openNav()">info</span>
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "35%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
+
+  <script>
+  var mymap = L.map('mapid').setView([41.878113, -87.629799], 13);
+
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiY3JpcHRoZW1hcCIsImEiOiJjbHNrb2xid2owMzQyMmpwOHgyY2I0eGdtIn0.GyCS8X0l1NhrN5N72RbrPg'
+}).addTo(mymap);
+
+  var marker = L.marker([41.8737362,-87.6534126]).addTo(mymap).bindPopup("this is the disability cultural center :)");
+  var marker = L.marker([41.886810, -87.626331]).addTo(mymap);
+
+  var CustomIcon = L.Icon.extend({
+        options: {
+            iconSize:     [40, 40], // size of the icon
+            iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
+            popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+        }
+    });
+  var greenIcon = new CustomIcon({iconUrl: 'markers/green.png'});
+  var redIcon = new CustomIcon({iconUrl: 'markers/red.png'});
+
+      L.marker([43.663530,-79.317204], {icon: greenIcon}).addTo(mymap).bindPopup("I am a custom green marker");
+      L.marker([43.656739,-79.424196], {icon: redIcon}).addTo(mymap).bindPopup("I am a custom red marker");
+
+  </script>
+
+
+</body>
+</html>
